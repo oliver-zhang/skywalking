@@ -138,6 +138,7 @@ public class ServiceAndEndpointRegisterClient implements BootService, Runnable, 
         while (GRPCChannelStatus.CONNECTED.equals(status) && shouldTry) {
             shouldTry = false;
             try {
+                //应用注册
                 if (RemoteDownstreamConfig.Agent.SERVICE_ID == DictionaryUtil.nullValue()) {
                     if (registerBlockingStub != null) {
                         ServiceRegisterMapping serviceRegisterMapping = registerBlockingStub.withDeadlineAfter(GRPC_UPSTREAM_TIMEOUT, TimeUnit.SECONDS).doServiceRegister(
@@ -152,6 +153,7 @@ public class ServiceAndEndpointRegisterClient implements BootService, Runnable, 
                         }
                     }
                 } else {
+                    //实例注册
                     if (registerBlockingStub != null) {
                         if (RemoteDownstreamConfig.Agent.SERVICE_INSTANCE_ID == DictionaryUtil.nullValue()) {
 

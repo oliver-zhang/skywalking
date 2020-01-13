@@ -54,7 +54,7 @@ public class ContextManager implements BootService {
                 context = new IgnoredTracerContext();
             } else {
                 if (RemoteDownstreamConfig.Agent.SERVICE_ID != DictionaryUtil.nullValue()
-                    && RemoteDownstreamConfig.Agent.SERVICE_INSTANCE_ID != DictionaryUtil.nullValue()
+                        && RemoteDownstreamConfig.Agent.SERVICE_INSTANCE_ID != DictionaryUtil.nullValue()
                 ) {
                     if (EXTEND_SERVICE == null) {
                         EXTEND_SERVICE = ServiceManager.INSTANCE.findService(ContextManagerExtendService.class);
@@ -173,13 +173,13 @@ public class ContextManager implements BootService {
     }
 
     /**
-    * Recommend use ContextManager::stopSpan(AbstractSpan span), because in that way, 
-    * the TracingContext core could verify this span is the active one, in order to avoid stop unexpected span.
-    * If the current span is hard to get or only could get by low-performance way, this stop way is still acceptable.
-    */
+     * Recommend use ContextManager::stopSpan(AbstractSpan span), because in that way,
+     * the TracingContext core could verify this span is the active one, in order to avoid stop unexpected span.
+     * If the current span is hard to get or only could get by low-performance way, this stop way is still acceptable.
+     */
     public static void stopSpan() {
         final AbstractTracerContext context = get();
-        stopSpan(context.activeSpan(),context);
+        stopSpan(context.activeSpan(), context);
     }
 
     public static void stopSpan(AbstractSpan span) {
@@ -207,7 +207,8 @@ public class ContextManager implements BootService {
 
     }
 
-    @Override public void shutdown() throws Throwable {
+    @Override
+    public void shutdown() throws Throwable {
 
     }
 

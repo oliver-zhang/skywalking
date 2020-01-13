@@ -19,6 +19,7 @@ package org.apache.skywalking.oap.server.core.storage.model;
 
 import java.lang.reflect.Field;
 import java.util.*;
+
 import lombok.Getter;
 import org.apache.skywalking.oap.server.core.source.DefaultScopeDefine;
 import org.apache.skywalking.oap.server.core.storage.annotation.*;
@@ -31,13 +32,15 @@ public class StorageModels implements IModelGetter, IModelSetter, IModelOverride
 
     private static final Logger logger = LoggerFactory.getLogger(StorageModels.class);
 
-    @Getter private final List<Model> models;
+    @Getter
+    private final List<Model> models;
 
     public StorageModels() {
         this.models = new LinkedList<>();
     }
 
-    @Override public Model putIfAbsent(Class aClass, int scopeId, Storage storage, boolean record) {
+    @Override
+    public Model putIfAbsent(Class aClass, int scopeId, Storage storage, boolean record) {
         // Check this scope id is valid.
         DefaultScopeDefine.nameOf(scopeId);
 
@@ -77,7 +80,8 @@ public class StorageModels implements IModelGetter, IModelSetter, IModelOverride
         }
     }
 
-    @Override public void overrideColumnName(String columnName, String newName) {
+    @Override
+    public void overrideColumnName(String columnName, String newName) {
         models.forEach(model -> model.getColumns().forEach(column -> {
             ColumnName existColumnName = column.getColumnName();
             String name = existColumnName.getName();

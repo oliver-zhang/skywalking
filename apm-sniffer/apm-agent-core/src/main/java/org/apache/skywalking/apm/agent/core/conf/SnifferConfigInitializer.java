@@ -56,6 +56,7 @@ public class SnifferConfigInitializer {
         InputStreamReader configFileStream;
 
         try {
+            //加载config/agent.config配置文件
             configFileStream = loadConfig();
             Properties properties = new Properties();
             properties.load(configFileStream);

@@ -20,6 +20,7 @@ package org.apache.skywalking.apm.agent.core.context.trace;
 
 /**
  * @author wusheng
+ * 调用层
  */
 public enum SpanLayer {
     DB(1),

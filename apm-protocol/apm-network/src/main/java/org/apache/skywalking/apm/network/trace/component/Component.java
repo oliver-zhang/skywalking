@@ -24,7 +24,7 @@ package org.apache.skywalking.apm.network.trace.component;
  * which has been supported by skywalking sniffer.
  *
  * The supported list is in {@link ComponentsDefine}.
- *
+ * 组件
  * @author wusheng
  */
 public interface Component {

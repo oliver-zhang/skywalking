@@ -64,8 +64,7 @@ public enum EndpointNameDictionary {
         }
     }
 
-    public void syncRemoteDictionary(
-        RegisterGrpc.RegisterBlockingStub serviceNameDiscoveryServiceBlockingStub) {
+    public void syncRemoteDictionary( RegisterGrpc.RegisterBlockingStub serviceNameDiscoveryServiceBlockingStub) {
         if (unRegisterEndpoints.size() > 0) {
             Endpoints.Builder builder = Endpoints.newBuilder();
             for (OperationNameKey operationNameKey : unRegisterEndpoints) {

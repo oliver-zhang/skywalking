@@ -52,8 +52,7 @@ public enum NetworkAddressDictionary {
         }
     }
 
-    public void syncRemoteDictionary(
-        RegisterGrpc.RegisterBlockingStub networkAddressRegisterServiceBlockingStub) {
+    public void syncRemoteDictionary(RegisterGrpc.RegisterBlockingStub networkAddressRegisterServiceBlockingStub) {
         if (unRegisterServices.size() > 0) {
             NetAddressMapping networkAddressMappings = networkAddressRegisterServiceBlockingStub.doNetworkAddressRegister(
                 NetAddresses.newBuilder().addAllAddresses(unRegisterServices).build());

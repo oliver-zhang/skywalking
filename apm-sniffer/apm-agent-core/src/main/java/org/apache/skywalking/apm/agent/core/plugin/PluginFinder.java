@@ -43,6 +43,7 @@ import static net.bytebuddy.matcher.ElementMatchers.not;
  * @author wusheng
  */
 public class PluginFinder {
+    //根据<Name,List<PluginDefine>>格式存放不同版本的Plugin定义
     private final Map<String, LinkedList<AbstractClassEnhancePluginDefine>> nameMatchDefine = new HashMap<String, LinkedList<AbstractClassEnhancePluginDefine>>();
     private final List<AbstractClassEnhancePluginDefine> signatureMatchDefine = new ArrayList<AbstractClassEnhancePluginDefine>();
     private final List<AbstractClassEnhancePluginDefine> bootstrapClassMatchDefine = new ArrayList<AbstractClassEnhancePluginDefine>();

@@ -24,8 +24,11 @@ import org.apache.skywalking.apm.network.language.agent.*;
  * @author wusheng
  */
 public class ID {
+    //应用实例编号
     private long part1;
+    //线程编号
     private long part2;
+    //时间戳
     private long part3;
     private String encoding;
     private boolean isValid;

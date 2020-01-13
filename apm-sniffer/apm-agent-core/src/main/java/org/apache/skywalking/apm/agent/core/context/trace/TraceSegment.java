@@ -34,7 +34,7 @@ import org.apache.skywalking.apm.network.language.agent.v2.SegmentObject;
  * {@link TraceSegment} is a segment or fragment of the distributed trace. See https://github.com/opentracing/specification/blob/master/specification.md#the-opentracing-data-model
  * A {@link TraceSegment} means the segment, which exists in current {@link Thread}. And the distributed trace is formed
  * by multi {@link TraceSegment}s, because the distributed trace crosses multi-processes, multi-threads. <p>
- *
+ * 用于记录所在线程( Thread )的链路
  * @author wusheng
  */
 public class TraceSegment {
@@ -47,7 +47,7 @@ public class TraceSegment {
      * The refs of parent trace segments, except the primary one. For most RPC call, {@link #refs} contains only one
      * element, but if this segment is a start span of batch process, the segment faces multi parents, at this moment,
      * we use this {@link #refs} to link them.
-     *
+     * 指向的父 TraceSegment 数组
      * This field will not be serialized. Keeping this field is only for quick accessing.
      */
     private List<TraceSegmentRef> refs;

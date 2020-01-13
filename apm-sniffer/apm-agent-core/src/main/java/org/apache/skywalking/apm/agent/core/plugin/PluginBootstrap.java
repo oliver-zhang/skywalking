@@ -45,6 +45,8 @@ public class PluginBootstrap {
         AgentClassLoader.initDefaultLoader();
 
         PluginResourcesResolver resolver = new PluginResourcesResolver();
+
+        //通过classloader加载所有的skywalking-plugin.def
         List<URL> resources = resolver.getResources();
 
         if (resources == null || resources.size() == 0) {
@@ -54,18 +56,20 @@ public class PluginBootstrap {
 
         for (URL pluginUrl : resources) {
             try {
+                //加载每个plugin
                 PluginCfg.INSTANCE.load(pluginUrl.openStream());
             } catch (Throwable t) {
                 logger.error(t, "plugin file [{}] init failure.", pluginUrl);
             }
         }
-
+        //获取plugin定义列表
         List<PluginDefine> pluginClassList = PluginCfg.INSTANCE.getPluginClassList();
 
         List<AbstractClassEnhancePluginDefine> plugins = new ArrayList<AbstractClassEnhancePluginDefine>();
         for (PluginDefine pluginDefine : pluginClassList) {
             try {
                 logger.debug("loading plugin class {}.", pluginDefine.getDefineClass());
+                //实例化PluginDefineClass
                 AbstractClassEnhancePluginDefine plugin =
                     (AbstractClassEnhancePluginDefine)Class.forName(pluginDefine.getDefineClass(),
                         true,
